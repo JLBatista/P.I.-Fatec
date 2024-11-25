@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/topo-padrao-govsp.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/barra-contraste-govsp.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/rodape-padrao-govsp.min.css">
+    <script src="https://kit.fontawesome.com/fa068c530f.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumo do Projeto de H.A.E.</title>
+    <style>
+        :root {
+            --primary-color: #004a8d;
+            --secondary-color: #f8f9fa;
+            --border-color: #e0e0e0;
+            --text-color: #333;
+            --spacing: 1rem;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--secondary-color);
+            border-radius: 8px;
+        }
+
+        .form-section h2 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0,74,141,0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .parecer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .radio-group-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0;
+        }
+
+        .radio-item input[type="radio"] {
+            margin: 0;
+        }
+
+        .radio-item span {
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #003666;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Adicione estes estilos ao seu CSS existente */
+        
+        /* Barra de Progresso */
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--border-color);
+            z-index: 1;
+        }
+
+        .step {
+            position: relative;
+            z-index: 2;
+            background: white;
+            padding: 0 10px;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--border-color);
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 5px;
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-number {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .step-text {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Tooltips */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            margin-left: 8px;
+        }
+
+        .tooltip-icon {
+            width: 16px;
+            height: 16px;
+            background: #ccc;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Validação Visual */
+        .form-group.error input {
+            border-color: #dc3545;
+            background-color: #fff8f8;
+        }
+
+        .form-group.success input {
+            border-color: #28a745;
+            background-color: #f8fff8;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        /* Modal de Preview */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn-confirm {
+            background: #28a745;
+        }
+
+        /* Feedback Visual */
+        .feedback {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            color: white;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideIn 0.3s ease;
+            z-index: 1000;
+        }
+
+        .feedback.success {
+            background: #28a745;
+        }
+
+        .feedback.error {
+            background: #dc3545;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Estilos adicionais para a seção de parecer */
+        .parecer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .radio-group-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0;
+        }
+
+        .radio-item input[type="radio"] {
+            margin: 0;
+        }
+
+        .radio-item span {
+            font-size: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .parecer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-group.full-width {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* Ajustes adicionais para garantir que não haja sobreposição */
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        .tooltip {
+            z-index: 2;
+        }
+
+        /* Estilos para o cabeçalho */
+        #cps-header {
+            background-color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .cps-header__container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .cps-header__logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cps-header__logo img {
+            max-height: 60px;
+            width: auto;
+        }
+
+        /* Estilos para o botão */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            padding: 1rem 0;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .submit-button:hover {
+            background-color: #003666;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 768px) {
+            .cps-header__logo img {
+                max-height: 50px;
+            }
+
+            .submit-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        .char-counter {
+            text-align: right;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+    </style>
+    <script>
+        function preencherDados() {
+            // Captura o nome do professor a partir da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const professor = urlParams.get('professor');
+
+            // Preenche o campo "Docente" com o nome do professor
+            if (professor) {
+                document.getElementById('nomeDocente').value = professor;
+            }
+
+            // Preenchimento de outras informações aleatórias (opcional)
+            const horasAleatorias = Math.floor(Math.random() * 40) + 1;
+            document.getElementById('horas').value = horasAleatorias;
+
+            // Seleciona aleatoriamente um tipo de HAE
+            const tiposHAE = document.getElementsByName('tipoHAE');
+            const tipoAleatorio = Math.floor(Math.random() * tiposHAE.length);
+            tiposHAE[tipoAleatorio].checked = true;
+        }
+
+        function validarHoras(event) {
+            const input = event.target;
+            const value = input.value;
+            if (isNaN(value) || value < 0) {
+                alert('Por favor, digite um número válido para as horas.');
+                input.value = '';
+            }
+        }
+
+        function enviarRelatorio() {
+            // Validar todos os campos obrigatórios
+            const inputs = document.querySelectorAll('input[required], textarea[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!validateField(input)) {
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                showFeedback('Por favor, preencha todos os campos obrigatórios', 'error');
+                return;
+            }
+            
+            // Se tudo estiver válido, mostrar preview
+            showPreview();
+        }
+
+        // Função para confirmar e enviar o relatório
+        function confirmarEnvio() {
+            // Fecha o modal de preview
+            document.getElementById('preview-modal').style.display = 'none';
+            
+            // Mostra feedback de sucesso
+            showFeedback('Relatório enviado com sucesso!', 'success');
+            
+            // Limpa os campos do formulário
+            setTimeout(() => {
+                document.querySelectorAll('input[type="text"]:not([readonly]), textarea').forEach(el => el.value = '');
+                document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+                updateProgress(1);
+            }, 1000);
+        }
+
+        // Função para mostrar feedback
+        function showFeedback(message, type) {
+            const feedback = document.createElement('div');
+            feedback.className = `feedback ${type}`;
+            feedback.textContent = message;
+            
+            document.body.appendChild(feedback);
+            
+            // Remove o feedback após 3 segundos
+            setTimeout(() => {
+                feedback.remove();
+            }, 3000);
+        }
+
+        // Adicione estas funções ao seu JavaScript existente
+
+        // Atualizar progresso
+        function updateProgress(step) {
+            document.querySelectorAll('.step').forEach((el, index) => {
+                if (index < step) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+        }
+
+        // Validação de campos
+        function validateField(input) {
+            const formGroup = input.closest('.form-group');
+            
+            if (input.value.trim() === '') {
+                formGroup.classList.add('error');
+                formGroup.classList.remove('success');
+                
+                // Adicionar mensagem de erro se não existir
+                if (!formGroup.querySelector('.error-message')) {
+                    const errorMessage = document.createElement('div');
+                    errorMessage.className = 'error-message';
+                    errorMessage.textContent = 'Este campo é obrigatório';
+                    formGroup.appendChild(errorMessage);
+                }
+                return false;
+            }
+            
+            formGroup.classList.remove('error');
+            formGroup.classList.add('success');
+            
+            // Remover mensagem de erro se existir
+            const errorMessage = formGroup.querySelector('.error-message');
+            if (errorMessage) {
+                errorMessage.remove();
+            }
+            return true;
+        }
+
+        // Preview do formulário
+        function showPreview() {
+            const modal = document.getElementById('preview-modal');
+            const previewContent = document.getElementById('preview-content');
+            
+            // Coletar dados do formulário
+            const docente = document.getElementById('nomeDocente').value;
+            const horas = document.getElementById('horas').value;
+            const projeto = document.getElementById('nomeProjeto').value;
+            const tipoHAE = document.querySelector('input[name="tipoHAE"]:checked')?.value || 'Não selecionado';
+            const coordenador = document.getElementById('nomeCoordenador').value;
+            const parecer = document.querySelector('input[name="parecerCoordenacao"]:checked')?.value || 'Não selecionado';
+            const observacoes = document.getElementById('observacoes').value;
+            
+            // Criar preview
+            previewContent.innerHTML = `
+                <div class="preview-item">
+                    <strong>Docente:</strong> ${docente}
+                </div>
+                <div class="preview-item">
+                    <strong>Projeto:</strong> ${projeto}
+                </div>
+                <div class="preview-item">
+                    <strong>Horas:</strong> ${horas}
+                </div>
+                <div class="preview-item">
+                    <strong>Tipo de HAE:</strong> ${tipoHAE}
+                </div>
+                <div class="preview-item">
+                    <strong>Coordenador:</strong> ${coordenador}
+                </div>
+                <div class="preview-item">
+                    <strong>Parecer:</strong> ${parecer}
+                </div>
+                <div class="preview-item">
+                    <strong>Observações:</strong> ${observacoes}
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        function closePreview() {
+            document.getElementById('preview-modal').style.display = 'none';
+        }
+
+        // Adicionar validação em tempo real
+        document.querySelectorAll('input[required], textarea[required]').forEach(input => {
+            input.addEventListener('blur', () => validateField(input));
+        });
+
+        // Atualizar progresso quando mudar de seção
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('focus', () => {
+                const section = input.closest('.form-section');
+                const sections = document.querySelectorAll('.form-section');
+                const currentStep = Array.from(sections).indexOf(section) + 1;
+                updateProgress(currentStep);
+            });
+        });
+
+        document.getElementById('observacoes').addEventListener('input', function() {
+            const maxLength = this.getAttribute('maxlength');
+            const currentLength = this.value.length;
+            this.nextElementSibling.textContent = `${currentLength}/${maxLength} caracteres`;
+        });
+    </script>
+</head>
+<body onload="preencherDados()">
+    <!-- Barra Governo -->
+    <section class="govsp-topo">
+        <div id="govsp-topbarGlobal" class="blu-e">
+            <div id="topbarGlobal">
+                <div id="topbarLink" class="govsp-black">
+                    <div class="govsp-portal">
+                        <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
+                            <img src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/logo-governo-do-estado-sp.png" alt="Governo do Estado de São Paulo" height="38" class="logo">
+                        </a>
+                    </div>
+                </div>
+                
+                <nav class="govsp-navbar govsp-navbar-expand-lg">
+                    <a class="govsp-link digital" href="https://spmaisdigital.sp.gov.br" target="_blank">SP + Digital</a>
+                    <a class="govsp-social" href="https://www.flickr.com/governosp/" target="_blank">
+                        <img class="govsp-icon-social" src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-flickr.png" alt="Flickr Governo de São Paulo" />
+                    </a>
+                    <a class="govsp-social" href="https://www.linkedin.com/company/governosp/" target="_blank">
+                        <img class="govsp-icon-social" src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-linkedin.png" alt="Linkedin Governo de São Paulo" />
+                    </a>
+                    <a class="govsp-social" href="https://www.tiktok.com/@governosp" target="_blank">
+                        <img class="govsp-icon-social" src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-tiktok.png" alt="TikTok Governo de São Paulo" />
+                    </a>
+                    <a class="govsp-social" href="https://www.youtube.com/governosp/" target="_blank">
+                        <img class="govsp-icon-social" src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-youtube.png" alt="Youtube Governo de São Paulo" />
+                    </a>
+                    <a class="govsp-social" href="https://www.twitter.com/governosp/" target="_blank">
+                        <img class="govsp-icon-social" src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-twitter.png" alt="Twitter Governo de São Paulo" />
+                    </a>
+                    <a class="govsp-social" href="https://www.instagram.com/governosp/" target="_blank">
+                        <img class="govsp-icon-social" src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-insta.png" alt="Instagram Governo de São Paulo" />
+                    </a>
+                    <a class="govsp-social" href="https://www.facebook.com/governosp/" target="_blank">
+                        <img class="govsp-icon-social" src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-facebook.png" alt="Facebook Governo de São Paulo" />
+                    </a>
+                    <p class="govsp-social" style="min-height:auto;">/governosp</p>
+                    <div id="separador-nav"></div>
+                    <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', 1);">
+                        <img class="govsp-acessibilidade" src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-big-font.png" alt="Aumentar Fonte">
+                    </a>
+                    <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', -1);">
+                        <img class="govsp-acessibilidade" src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-small-font.png" alt="Diminuir Fonte">
+                    </a>
+                    <a class="govsp-acessibilidade" href="#" id="altocontraste" accesskey="3" onclick="window.toggleContrast()" onkeydown="window.toggleContrast()">
+                        <img class="govsp-acessibilidade" src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-contrast.png" alt="Contraste" >
+                    </a>
+                    <a class="govsp-acessibilidade" href="http://www.saopaulo.sp.gov.br/fale-conosco/comunicar-erros/" title="Comunicar Erros" target="_blank">
+                        <img class="govsp-acessibilidade" src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-error-report.png" >
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <!-- Logo Fatec -->
+    <header id="cps-header">
+        <div class="cps-header__container">
+            <div class="cps-header__logo">
+                <a href="https://fatecitapira.cps.sp.gov.br/" rel="home">
+                    <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/53/2024/03/logo-fatec_itapira.png" 
+                         alt="Fatec Ogari de Castro Pacheco" 
+                         class="custom-logo">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <div class="form-header">
+            <h1>Resumo do Projeto de H.A.E.</h1>
+            <p class="subtitle">Fatec de Itapira "Ogari de Castro Pacheco"</p>
+        </div>
+
+        <!-- Seção de Informações Básicas -->
+        <div class="form-section">
+            <h2>Informações do Projeto</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>
+                        Docente
+                        <div class="tooltip">
+                            <span class="tooltip-icon">?</span>
+                            <span class="tooltip-text">Nome completo do professor responsável</span>
+                        </div>
+                    </label>
+                    <input type="text" id="nomeDocente" required readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        Quantidade de HAE Proposta
+                        <div class="tooltip">
+                            <span class="tooltip-icon">?</span>
+                            <span class="tooltip-text">Número de horas-aula equivalentes solicitadas</span>
+                        </div>
+                    </label>
+                    <input type="text" id="horas" required oninput="validarHoras(event)">
+                </div>
+
+                <div class="form-group full-width">
+                    <label>
+                        Nome do Projeto
+                        <div class="tooltip">
+                            <span class="tooltip-icon">?</span>
+                            <span class="tooltip-text">Título ou descrição breve do projeto</span>
+                        </div>
+                    </label>
+                    <input type="text" id="nomeProjeto" required placeholder="Ex: Coordenação de Estágios, Projeto de Extensão, etc.">
+                </div>
+
+                <div class="form-group full-width">
+                    <label>
+                        Tipo de HAE Solicitada
+                        <div class="tooltip">
+                            <span class="tooltip-icon">?</span>
+                            <span class="tooltip-text">GTI: Gestão Tecnológica e Inovação | GPI: Gestão de Projetos Institucionais | GE: Gestão Escolar | DSM: Desenvolvimento de Software Multiplataforma</span>
+                        </div>
+                    </label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="radio" name="tipoHAE" value="GTI" required>
+                            <span>GTI</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="radio" name="tipoHAE" value="GPI" required>
+                            <span>GPI</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="radio" name="tipoHAE" value="GE" required>
+                            <span>GE</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="radio" name="tipoHAE" value="DSM" required>
+                            <span>DSM</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Parecer -->
+        <div class="form-section">
+            <h2>Parecer da Coordenação</h2>
+            <div class="parecer-grid">
+                <div class="form-group">
+                    <label>
+                        Coordenador Responsável
+                        <div class="tooltip">
+                            <span class="tooltip-icon">?</span>
+                            <span class="tooltip-text">Nome do coordenador que está avaliando o projeto</span>
+                        </div>
+                    </label>
+                    <input type="text" id="nomeCoordenador" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Status do Parecer</label>
+                    <div class="radio-group-vertical">
+                        <label class="radio-item">
+                            <input type="radio" name="parecerCoordenacao" value="deferido" required>
+                            <span>Deferido</span>
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="parecerCoordenacao" value="indeferido" required>
+                            <span>Indeferido</span>
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="parecerCoordenacao" value="deferido_parcial" required>
+                            <span>Deferido Parcial</span>
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="parecerCoordenacao" value="correcoes" required>
+                            <span>Devolver para Correções</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label>
+                        Observações
+                        <div class="tooltip">
+                            <span class="tooltip-icon">?</span>
+                            <span class="tooltip-text">Comentários e justificativas sobre o parecer</span>
+                        </div>
+                    </label>
+                    <textarea rows="3" id="observacoes" placeholder="Digite as observações" maxlength="500"></textarea>
+                    <div class="char-counter">0/500 caracteres</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button class="submit-button" onclick="enviarRelatorio()">Enviar Relatório</button>
+    </div>
+
+    <div class="footer">
+        Fatec de Itapira "Ogari de Castro Pacheco" | <a href="base.html">Fatec Itapira</a>
+    </div>
+
+    <!-- Substitua todo o rodapé atual por: -->
+    <section id="govsp-rodape">         
+        
+        <div class="container rodape">    
+            <div class="logo-rodape">
+                <a href="https://www.saopaulo.sp.gov.br/">
+                    <img src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/logo-rodape-governo-do-estado-sp.png" alt="site do Governo de São Paulo" width="206" height="38">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts necessários -->
+    <script src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/js/sao-paulo/script-topo.js"></script>
+    <script src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/js/sao-paulo/script-contrast.js"></script>
+    <script src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/js/sao-paulo/script-tamanho-fonte.js"></script>
+    <script src="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/js/sao-paulo/script-scroll.js"></script>
+
+    <style>
+        /* Estilos necessários */
+        #govsp-rodape {
+            bottom: 0;
+            width: 100%;
+            background-color: #000;
+        }
+
+        .container.rodape {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+
+        .logo-rodape {
+            text-align: center;
+        }
+
+        .logo-rodape img {
+            height: 38px;
+            width: auto;
+        }
+
+        /* Menu Kebab para mobile */
+        .govsp-kebab {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .govsp-kebab {
+                display: block;
+            }
+        }
+    </style>
+
+    <div class="progress-bar">
+        <div class="step active">
+            <div class="step-number">1</div>
+            <div class="step-text">Informações Básicas</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-text">Parecer</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-text">Confirmação</div>
+        </div>
+    </div>
+
+    <div id="preview-modal" class="modal">
+        <div class="modal-content">
+            <h2>Confirmação dos Dados</h2>
+            <div id="preview-content"></div>
+            <div class="modal-buttons">
+                <button onclick="closePreview()">Editar</button>
+                <button onclick="confirmarEnvio()" class="btn-confirm">Confirmar e Enviar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

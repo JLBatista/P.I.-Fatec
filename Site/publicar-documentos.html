@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Links do cabeçalho da Fatec -->
+    <link rel="stylesheet" type="text/css" href="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/topo-padrao-govsp.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/barra-contraste-govsp.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fatecitapira.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/rodape-padrao-govsp.min.css">
+    <script src="https://kit.fontawesome.com/fa068c530f.js" crossorigin="anonymous"></script>
+    <title>Publicar Edital HAE</title>
+    
+    <style>
+        /* Mantendo os estilos base do dashboard */
+        :root {
+            --fatec-azul: #003e7e;
+            --fatec-vermelho: #cc1719;
+            --fatec-cinza: #666666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .publish-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .upload-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: var(--fatec-azul);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--fatec-cinza);
+        }
+
+        .form-group input[type="date"],
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--fatec-azul);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--fatec-cinza);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--fatec-cinza);
+        }
+
+        .tab.active {
+            color: var(--fatec-azul);
+            border-bottom: 3px solid var(--fatec-azul);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .status-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .status-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .status-pending {
+            background: #ffeeba;
+            color: #856404;
+        }
+
+        .status-complete {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .notification-options {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .checkbox-group {
+            margin: 10px 0;
+        }
+
+        .preview-area {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .preview-area img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .alert {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .alert-info {
+            background: #cce5ff;
+            border: 1px solid #b8daff;
+            color: #004085;
+        }
+    </style>
+</head>
+<body>
+    <!-- Incluir header da Fatec aqui -->
+    
+    <div class="container">
+        <h1 style="color: var(--fatec-azul); text-align: center;">Publicar Edital HAE</h1>
+        
+        <div class="status-section">
+            <h3>Status das Avaliações</h3>
+            <div class="status-info">
+                <span>Total de Inscrições: <strong>15</strong></span>
+                <span>Avaliadas: <strong>12</strong></span>
+                <span>Pendentes: <strong>3</strong></span>
+                <span class="status-badge status-pending">Avaliações em Andamento</span>
+            </div>
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                Todas as inscrições precisam ser avaliadas antes da publicação do edital final.
+            </div>
+        </div>
+
+        <div class="publish-section">
+            <h3>Publicar Edital HAE</h3>
+            
+            <div class="upload-area">
+                <i class="fas fa-upload fa-2x"></i>
+                <h4>Upload do Edital</h4>
+                <p>Arraste o arquivo aqui ou clique para selecionar</p>
+                <input type="file" id="editalFile" accept=".pdf,.doc,.docx" style="display: none;">
+            </div>
+
+            <div class="preview-area" style="display: none;">
+                <h4>Prévia do Documento</h4>
+                <div id="documentPreview"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="editalDate">Data de Publicação:</label>
+                <input type="date" id="editalDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="semester">Semestre de Referência:</label>
+                <select id="semester" required>
+                    <option value="2024/1">2024/1</option>
+                    <option value="2024/2">2024/2</option>
+                </select>
+            </div>
+
+            <div class="notification-options">
+                <h4>Opções de Notificação</h4>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="notifyAll" checked>
+                    <label for="notifyAll">Notificar todos os professores por email</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="notifyApproved" checked>
+                    <label for="notifyApproved">Enviar email individual com o resultado para cada professor</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="notifyCoordinators">
+                    <label for="notifyCoordinators">Notificar coordenadores de curso</label>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <a href="dashboard.html?tipo=diretor" class="btn btn-secondary">Voltar</a>
+                <button class="btn btn-primary" onclick="publicarEdital()">
+                    <i class="fas fa-paper-plane"></i>
+                    Publicar Edital
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar status das avaliações
+            checkAvaliacaoStatus();
+
+            // Configurar preview do documento
+            setupDocumentPreview();
+        });
+
+        function checkAvaliacaoStatus() {
+            // Aqui você implementaria a lógica para verificar o status real das avaliações
+            // Por enquanto, está apenas simulado
+            const todasAvaliadas = false;
+            const btnPublicar = document.querySelector('.btn-primary');
+            
+            if (!todasAvaliadas) {
+                btnPublicar.disabled = true;
+                btnPublicar.title = "Complete todas as avaliações antes de publicar";
+            }
+        }
+
+        function setupDocumentPreview() {
+            const fileInput = document.getElementById('editalFile');
+            const previewArea = document.querySelector('.preview-area');
+            
+            fileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    previewArea.style.display = 'block';
+                    // Implementar lógica de preview do documento
+                }
+            });
+        }
+
+        function publicarEdital() {
+            // Validações
+            const editalFile = document.getElementById('editalFile').files[0];
+            const editalDate = document.getElementById('editalDate').value;
+            const semester = document.getElementById('semester').value;
+
+            if (!editalFile || !editalDate || !semester) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            // Aqui você implementaria a lógica de publicação e envio de emails
+            const notifyAll = document.getElementById('notifyAll').checked;
+            const notifyApproved = document.getElementById('notifyApproved').checked;
+            const notifyCoordinators = document.getElementById('notifyCoordinators').checked;
+
+            // Simulação de publicação
+            alert('Edital publicado com sucesso! Notificações serão enviadas conforme selecionado.');
+            window.location.href = 'dashboard.html?tipo=diretor';
+        }
+    </script>
+
+    <!-- Scripts da Fatec -->
+    <script src="js/auth.js"></script>
+</body>
+</html> 
